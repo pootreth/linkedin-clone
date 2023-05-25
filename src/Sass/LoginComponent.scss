@@ -11,7 +11,10 @@ body {
   background-color: white !important;
   height: 100vh;
   .login-wrapper-inner {
-    margin-left: 200px;
+    // margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .heading {
     font-family: system-ui;
@@ -47,7 +50,7 @@ body {
 }
 
 .login-btn:hover {
-    background-color: $linkedinBlue3;
+  background-color: $linkedinBlue3;
 }
 
 .auth-inputs {
@@ -68,8 +71,9 @@ body {
     font-size: 16px;
     margin: 10px 0px;
   }
-  .common-input:focus{
+  .common-input:focus {
     outline: 1px solid $linkedinBlue1;
+
   }
   ::placeholder {
     font-family: system-ui;
@@ -89,9 +93,9 @@ body {
   color: black;
   text-align: center;
   height: 1.5em;
-  opacity: .5;
+  opacity: 0.5;
   &:before {
-    content: '';
+    content: "";
     // use the linear-gradient for the fading effect
     // use a solid background color for a solid bar
     background: linear-gradient(to right, transparent, #818078, transparent);
@@ -107,7 +111,7 @@ body {
     display: inline-block;
     color: black;
 
-    padding: 0 .5em;
+    padding: 0 0.5em;
     line-height: 1.5em;
     // this is really the only tricky part, you need to specify the background color of the container element...
     color: #818078;
@@ -116,14 +120,17 @@ body {
 }
 
 .google-btn-container {
-  margin-left: 200px;
+  //  margin-left: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .google-btn {
     width: 300px !important;
   }
 
   .go-to-signup {
-    margin-left: 50px;
+    // margin-left: 50px;
     font-size: 16px;
   }
 
@@ -133,5 +140,4 @@ body {
     cursor: pointer;
     font-size: 16px;
   }
-  
 }

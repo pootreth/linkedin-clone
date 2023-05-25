@@ -1,37 +1,37 @@
 import { useState } from "react";
-import { LoginAPI, GoogleSignInAPI } from "../api/AuthAPI";
+import { RegisterAPI, GoogleSignInAPI } from "../api/AuthAPI";
 import LinkedinLogo from "../assets/linkedinLogo.png";
 import GoogleButton from "react-google-button";
 import { useNavigate } from "react-router-dom";
 import "../Sass/LoginComponent.scss";
 import { toast } from "react-toastify";
 
-export default function LoginComponent() {
+export default function RegisterComponent() {
   let navigate = useNavigate();
   const [credentails, setCredentails] = useState({});
   const login = async () => {
     try {
-      await LoginAPI(credentails.email, credentails.password);
-      toast.success("Signed In to LinkedIn!");
-      navigate("/home");
+      await RegisterAPI(credentails.email, credentails.password);
+      toast.success("Account created!");
+      navigate('/home')
     } catch (err) {
       console.log(err);
-      toast.error("Please check your credentials");
+      toast.error("Cannot create your account");
     }
   };
 
   const googleSignIn = () => {
-    GoogleSignInAPI();
-    navigate("/home");
+    let response = GoogleSignInAPI();
+    console.log(response);
   };
   return (
     <div className="login-wrapper">
       <img src={LinkedinLogo} className="linkedinLogo" />
       <div className="login-wrapper-inner">
-        <div>
-          <h1 className="heading">Sign in</h1>
-          <p className="sub-heading">Stay updated on your professional world</p>
-        </div>
+        <>
+          <h1 className="heading">Make the most of your professional life</h1>
+        </>
+
         <div className="auth-inputs">
           <input
             onChange={(event) =>
@@ -39,7 +39,7 @@ export default function LoginComponent() {
             }
             type="email"
             className="common-input"
-            placeholder="Email or Phone"
+            placeholder="Email or phone number"
           />
           <input
             onChange={(event) =>
@@ -47,13 +47,13 @@ export default function LoginComponent() {
             }
             type="password"
             className="common-input"
-            placeholder="Password"
+            placeholder="Password (6 or more characters)"
           />
         </div>
         <div>
-          <p className="forgot">Forgot password?</p>
+          
           <button onClick={login} className="login-btn">
-            Sign in
+            Agree & Join
           </button>
         </div>
       </div>
@@ -62,7 +62,10 @@ export default function LoginComponent() {
         <GoogleButton className="google-btn" onClick={googleSignIn} />
 
         <p className="go-to-signup">
-          New to LinkedIn? <span className="join-now" onClick={() => navigate('/register')}>Join now</span>
+          Already on LinkedIn?{" "}
+          <span className="join-now" onClick={() => navigate("/")}>
+            Sign in
+          </span>
         </p>
       </div>
     </div>
