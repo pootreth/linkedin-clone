@@ -5,6 +5,9 @@ import "./index.scss";
 export default function PostStatus() {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
+  const sendStatus = () => {
+    
+  }
   return (
     <div className="post-status-main">
       <div className="post-status">
@@ -18,6 +21,7 @@ export default function PostStatus() {
         modalOpen={modalOpen}
         setModalOpen={setModalOpen}
         status={status}
+        sendStatus={sendStatus}
       />
     </div>
   );
