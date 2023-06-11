@@ -11,9 +11,10 @@ export default function RegisterComponent() {
   const [credentails, setCredentails] = useState({});
   const login = async () => {
     try {
-      await RegisterAPI(credentails.email, credentails.password);
+      let res = await RegisterAPI(credentails.email, credentails.password);
       toast.success("Account created!");
       navigate('/home')
+      localStorage.setItem("userEmail", res.user.email);
     } catch (err) {
       console.log(err);
       toast.error("Cannot create your account");

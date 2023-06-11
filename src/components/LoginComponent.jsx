@@ -11,8 +11,9 @@ export default function LoginComponent() {
   const [credentails, setCredentails] = useState({});
   const login = async () => {
     try {
-      await LoginAPI(credentails.email, credentails.password);
+      let res = await LoginAPI(credentails.email, credentails.password);
       toast.success("Signed In to LinkedIn!");
+      localStorage.setItem('userEmail', res.user.email);
       navigate("/home");
     } catch (err) {
       console.log(err);
